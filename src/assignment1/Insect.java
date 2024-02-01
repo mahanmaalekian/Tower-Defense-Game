@@ -1,7 +1,7 @@
 package assignment1;
 
 public class Insect {
-    private Tile tile = new Tile();
+    private Tile tile;
     private int hp;
 
     public Insect(Tile tile, int hp) {
