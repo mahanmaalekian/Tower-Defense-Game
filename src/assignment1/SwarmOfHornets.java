@@ -46,6 +46,7 @@ public class SwarmOfHornets {
                     hornetArray[j] = hornetArray[j+1];
                 }
                 hornetArray[size - 1] = null;
+                size--;
                 return true;
             }
         }
