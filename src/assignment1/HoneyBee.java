@@ -1,6 +1,6 @@
 package assignment1;
 
-public class HoneyBee extends Insect {
+public abstract class HoneyBee extends Insect {
     private int cost;
 
     public HoneyBee(Tile tile, int hp, int foodCost) {

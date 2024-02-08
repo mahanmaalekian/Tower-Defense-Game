@@ -55,10 +55,16 @@ public class Tile {
     }
 
     public Tile towardTheHive() {
+        if (!path || hive) {
+            return null;
+        }
         return towardHive;
     }
 
     public Tile towardTheNest() {
+        if (!path || nest) {
+            return null;
+        }
         return towardNest;
     }
 
@@ -66,12 +72,14 @@ public class Tile {
         if (towardHive == null) {
             if (hive && path) {
                 this.towardNest = towardNest;
+                this.towardHive = null;
             } else {
                 throw new IllegalArgumentException("Next tile on the path toward the hive cannot be null.");
             }
         } else if (towardNest == null) {
             if (nest && path) {
                 this.towardHive = towardHive;
+                this.towardNest = null;
             } else {
                 throw new IllegalArgumentException("Next tile on the path toward the nest cannot be null.");
             }
@@ -105,16 +113,15 @@ public class Tile {
         return swarm.getFirstHornet();
     }
 
-    public Hornet[] getSwarm() {
+    public Hornet[] getHornets() {
         return swarm.getHornets();
     }
 
     public boolean addInsect(Insect insect) {
-        if (insect instanceof HoneyBee && bee != null && !nest) {
+        if (insect instanceof HoneyBee && bee == null && !nest) {
             bee = (HoneyBee) insect;
             bee.setPosition(this);
             return true;
-
 
         }
         if (insect instanceof Hornet && towardHive != null) {

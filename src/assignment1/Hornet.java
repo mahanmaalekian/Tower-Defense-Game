@@ -8,4 +8,8 @@ public class Hornet extends Insect{
         this.attackDamage = attackDamage;
     }
 
+    private boolean takeAction() {
+
+    }
+
 }

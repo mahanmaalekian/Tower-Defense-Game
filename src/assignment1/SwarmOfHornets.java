@@ -5,7 +5,8 @@ public class SwarmOfHornets {
     private int size;
 
     public SwarmOfHornets() {
-        this.hornetArray = new Hornet[0];
+        //should it be 0?
+        this.hornetArray = new Hornet[10];
         size = 0;
     }
 
@@ -19,7 +20,6 @@ public class SwarmOfHornets {
             temp[i] = hornetArray[i];
         }
         return temp;
-        //since you double every time, you change size, the last elements could be null
     }
 
     public Hornet getFirstHornet() {
