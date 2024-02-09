@@ -3,6 +3,7 @@ package assignment1;
 public class SwarmOfHornets {
     private Hornet[] hornetArray;
     private int size;
+    public static double QUEEN_BOOST;
 
     public SwarmOfHornets() {
         //should it be 0?
@@ -32,6 +33,11 @@ public class SwarmOfHornets {
     }
 
     public void addHornet(Hornet hornet) {
+        if (hornet.isTheQueen()) {
+            for (int i = 0; i < size; i++) {
+                hornetArray[i].regenerateHealth(QUEEN_BOOST);
+            }
+        }
         if (hornetArray.length == size) {
             resize();
         }
