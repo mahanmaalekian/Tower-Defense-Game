@@ -9,6 +9,7 @@ public class Tile {
     private Tile towardNest;
     private HoneyBee bee;
     private SwarmOfHornets swarm;
+    private boolean isOnFire = false;
 
     public Tile() {
         food = 0;
@@ -102,6 +103,7 @@ public class Tile {
     }
 
     public int getNumOfHornets() {
+        if (swarm == null) return 0;
         return swarm.sizeOfSwarm();
     }
 
@@ -110,10 +112,12 @@ public class Tile {
     }
 
     public Hornet getHornet() {
+        if (swarm == null) return null;
         return swarm.getFirstHornet();
     }
 
     public Hornet[] getHornets() {
+        if (swarm == null) return null;
         return swarm.getHornets();
     }
 
@@ -124,7 +128,10 @@ public class Tile {
             return true;
 
         }
-        if (insect instanceof Hornet && towardHive != null) {
+        if (insect instanceof Hornet && path) {
+            if (swarm == null){
+                swarm = new SwarmOfHornets();
+            }
             swarm.addHornet((Hornet) insect);
             int size = swarm.sizeOfSwarm();
             swarm.getHornets()[size - 1].setPosition(this);
@@ -149,6 +156,14 @@ public class Tile {
             }
         }
         return false;
+    }
+
+    public void setOnFire() {
+        isOnFire = true;
+    }
+
+    public boolean isOnFire() {
+        return isOnFire;
     }
 }
 

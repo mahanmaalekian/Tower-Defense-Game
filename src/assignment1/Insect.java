@@ -26,7 +26,7 @@ public abstract class Insect {
 
     public void takeDamage(int damage) {
         hp = hp - damage;
-        if (damage <= 0) {
+        if (hp <= 0) {
             tile.removeInsect(this);
         }
      }
@@ -34,11 +34,20 @@ public abstract class Insect {
     public abstract boolean takeAction();
 
     public boolean equals(Object o) {
-        if (o instanceof Insect) {
-            if (((Insect) o).getHealth() == hp && ((Insect) o).getPosition() == tile) {
-                return true;
-            }
-        }
-        return false;
+        if (o == null || !(o instanceof Insect)) return false;
+        Insect insect = (Insect) o;
+        return insect.hp == this.hp && insect.tile == this.tile;
+
+        //if (o instanceof Insect) {
+          //  if (((Insect) o).getHealth() == hp && ((Insect) o).getPosition() == tile) {
+         //       return true;
+          //  }
+     //   }
+        //return false;
     }
+
+    public void regenerateHealth(double healthPercentage) {
+        hp = (int) (hp * (1 + healthPercentage/100));
+    }
+
 }
