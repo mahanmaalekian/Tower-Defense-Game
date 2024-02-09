@@ -10,14 +10,19 @@ public class FireBee extends HoneyBee {
         this.maxAttackRange = maxAttackRange;
     }
 
+    //ASK IF FIREBEES CAN CHANGE THEIR TILE AFTER ATTACKING
     public boolean takeAction() {
         int range = 0;
         Tile tile = this.getPosition();
         if (!tile.isOnThePath()) return false;
         tile = tile.towardTheNest();
+        //this.setPosition(tile);
+        range++;
         while(!tile.isNest() && range <= maxAttackRange) {
-            if (tile.isOnFire()){
+            if (tile.isOnFire() || tile.getNumOfHornets() == 0){
                 tile = tile.towardTheNest();
+                //this.setPosition(tile);
+                range++;
             }
             else {
                 tile.setOnFire();

@@ -150,6 +150,7 @@ public class Tile {
             if (swarm.removeHornet((Hornet) insect)) {
                 insect.setPosition(null);
                 if (swarm.sizeOfSwarm() == 0) {
+                    //should it be null?
                     swarm = null;
                 }
                 return true;

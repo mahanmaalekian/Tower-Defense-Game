@@ -11,9 +11,11 @@ public class Hornet extends Insect{
         this.attackDamage = attackDamage;
     }
 
+    //REVIEW THIS METHOD
     public boolean takeAction() {
         this.takeDamage(BASE_FIRE_DMG);
         if (this.getHealth() <= 0) return false;
+
         Tile tile = this.getPosition();
         HoneyBee bee = tile.getBee();
         if (tile.isHive() && bee == null) {
@@ -24,9 +26,14 @@ public class Hornet extends Insect{
             return true;
         }
         else {
+            //when you remove an insect it could become null
+            //you could have reached the nest
+            Tile temp = this.getPosition().towardTheHive();
             this.getPosition().removeInsect(this);
-            this.setPosition(this.getPosition().towardTheNest());
-            this.getPosition().addInsect(this);
+            this.setPosition(temp);
+            temp.addInsect(this);
+            //this.getPosition().towardTheNest().removeInsect(this);
+
             return true;
         }
     }
