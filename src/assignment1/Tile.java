@@ -69,18 +69,21 @@ public class Tile {
         return towardNest;
     }
 
+    //check this method
     public void createPath(Tile towardHive, Tile towardNest) {
         if (towardHive == null) {
-            if (hive && path) {
+            if (hive && this.towardHive == null) {
                 this.towardNest = towardNest;
-                this.towardHive = null;
+                //this.towardHive = null;
+                path = true;
             } else {
                 throw new IllegalArgumentException("Next tile on the path toward the hive cannot be null.");
             }
         } else if (towardNest == null) {
-            if (nest && path) {
+            if (nest && this.towardNest == null) {
                 this.towardHive = towardHive;
-                this.towardNest = null;
+                //this.towardNest = null;
+                path = true;
             } else {
                 throw new IllegalArgumentException("Next tile on the path toward the nest cannot be null.");
             }

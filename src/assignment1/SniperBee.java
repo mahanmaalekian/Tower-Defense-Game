@@ -5,7 +5,7 @@ public class SniperBee extends HoneyBee{
     private int piercingPower;
     public static int BASE_HEALTH;
     public static int BASE_COST;
-    private Tile aiming = null;
+    private boolean aiming = true;
 
     public SniperBee(Tile tile, int attackDamage, int piercingPower) {
         super(tile, BASE_HEALTH,BASE_COST);
@@ -23,19 +23,19 @@ public class SniperBee extends HoneyBee{
             n = tile.getNumOfHornets();
         }
         if (!tile.isOnThePath()) return false;
-        tile = tile.towardTheNest();
+        //tile = tile.towardTheNest();
 
         while (!tile.isNest()) {
             if (tile.getNumOfHornets() == 0) {
                 tile = tile.towardTheNest();
             }
             else {
-                if (aiming != tile){
-                    aiming  = tile;
+                if (aiming){
+                    aiming  = false;
                     return false;
                 }
                 else {
-                    aiming = null;
+                    aiming = true;
                     Hornet[] hornets = tile.getHornets();
                     for (int i = 0; i < n; i++){
                         hornets[i].takeDamage(attackDamage);

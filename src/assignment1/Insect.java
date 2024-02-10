@@ -47,7 +47,7 @@ public abstract class Insect {
     }
 
     public void regenerateHealth(double healthPercentage) {
-        hp = (int) (hp * (1 + healthPercentage/100));
+        hp = (int) (hp * (1 + healthPercentage));
     }
 
 }

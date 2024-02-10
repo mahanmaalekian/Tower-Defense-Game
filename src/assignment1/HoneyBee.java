@@ -16,7 +16,7 @@ public abstract class HoneyBee extends Insect {
     public void takeDamage(int damage) {
         if (this.getPosition().isHive()) {
             //round towards 0
-            damage = (int) (damage * (100 - HIVE_DMG_REDUCTION) / 100);
+            damage = (int) (damage * (1.0 - HIVE_DMG_REDUCTION));
         }
         super.takeDamage(damage);
     }

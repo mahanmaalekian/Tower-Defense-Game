@@ -70,13 +70,12 @@ public class Hornet extends Insect{
     }
 
     private boolean miniTakeAction() {
-
-        this.takeDamage(BASE_FIRE_DMG);
+        Tile tile = this.getPosition();
+        if (tile.isOnFire()) this.takeDamage(BASE_FIRE_DMG);
         if (this.getHealth() <= 0) return false;
 
-        Tile tile = this.getPosition();
         HoneyBee bee = tile.getBee();
-        if (tile.isHive() && bee == null) {
+        if (tile.isHive() && this.getPosition().getBee() == null) {
             return false;
         }
         if (bee != null) {
