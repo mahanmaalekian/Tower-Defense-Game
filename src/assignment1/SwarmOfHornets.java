@@ -60,17 +60,22 @@ public class SwarmOfHornets {
     }
 
     private void resize() {
-        if (size == 0) {
-            Hornet [] bigger = new Hornet[1];
-            hornetArray = bigger;
+//        if (size == 0) {
+//            Hornet [] bigger = new Hornet[1];
+//            hornetArray = bigger;
+//        }
+//        else {
+//            Hornet[] bigger = new Hornet[size * 2];
+//            for (int i = 0; i < size; i++) {
+//                bigger[i] = hornetArray[i];
+//            }
+//            hornetArray = bigger;
+//        }
+        Hornet[] bigger = new Hornet[size * 2];
+        for (int i = 0; i < size; i++) {
+            bigger[i] = hornetArray[i];
         }
-        else {
-            Hornet[] bigger = new Hornet[size * 2];
-            for (int i = 0; i < size; i++) {
-                bigger[i] = hornetArray[i];
-            }
-            hornetArray = bigger;
-        }
+        hornetArray = bigger;
     }
 }
 
