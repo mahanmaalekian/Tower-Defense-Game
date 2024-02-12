@@ -102,7 +102,7 @@ public class Tile {
     }
 
     public void storeFood(int food) {
-        this.food = food;
+        this.food = this.food + food;
     }
 
     public int getNumOfHornets() {

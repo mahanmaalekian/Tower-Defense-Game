@@ -71,6 +71,7 @@ public class Hornet extends Insect{
 
     private boolean miniTakeAction() {
         Tile tile = this.getPosition();
+        if (tile == null) return false;
         if (tile.isOnFire()) this.takeDamage(BASE_FIRE_DMG);
         if (this.getHealth() <= 0) return false;
 

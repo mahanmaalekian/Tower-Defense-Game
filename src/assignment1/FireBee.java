@@ -18,7 +18,7 @@ public class FireBee extends HoneyBee {
         tile = tile.towardTheNest();
         //this.setPosition(tile);
         range++;
-        while(!tile.isNest() && range <= maxAttackRange) {
+        while(tile != null && !tile.isNest() && range <= maxAttackRange) {
             if (tile.isOnFire() || tile.getNumOfHornets() == 0){
                 tile = tile.towardTheNest();
                 //this.setPosition(tile);
