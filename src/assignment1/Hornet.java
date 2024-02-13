@@ -11,9 +11,7 @@ public class Hornet extends Insect{
         this.attackDamage = attackDamage;
     }
 
-    //REVIEW THIS METHOD
     public boolean takeAction() {
-        //add hornet queen
         boolean actionTaken;
         if (isQueeen) {
             actionTaken = miniTakeAction();
