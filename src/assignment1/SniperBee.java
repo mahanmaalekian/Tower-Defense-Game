@@ -25,7 +25,7 @@ public class SniperBee extends HoneyBee{
         if (!tile.isOnThePath()) return false;
         //tile = tile.towardTheNest();
 
-        while (!tile.isNest()) {
+        while (tile != null && !tile.isNest()) {
             if (tile.getNumOfHornets() == 0) {
                 tile = tile.towardTheNest();
             }
